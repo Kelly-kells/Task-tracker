@@ -1,4 +1,5 @@
 import { useState }from 'react'
+import InputForm from "./InputForm";
 
 const AddTask = ({ onAdd }) => {
     
@@ -22,35 +23,24 @@ const AddTask = ({ onAdd }) => {
     return (
         <form className ='add-form' onSubmit=
          {onSubmit}>
-            <div className='form-control'>
-                <label>Task</label>
-                <input type='text' placeholer='Add Task'
-                 value = {text} onChange={(e) =>
-                    setText(e.target.value)}
+            <InputForm onChangeEvent={setText} value={text} lableName="Task" placeholer="Add Task" />
 
-                 />
-                
-            </div>
-            <div className='form-control'>
-                <label>Day and Time</label>
-                <input type='text' placeholer='Add Day and Time'
-                value={day}
-                onChange ={(e) => setDay(e.target.value)}/>
-                
-                
-            </div>
+            <InputForm onChangeEvent={setDay} value={day} lableName="Day and Time" placeholer="Add Day and Time" />
+           
             <div className='form-control
              form-control-check'>
                 <label>Set Reminder</label>
-                <input type='checkbox'
+                <input
+                    type='checkbox'
                 checked={reminder}
                 value = {reminder}
                 onChange={(e) => setReminder
                 (e.currentTarget.checked)}/>
-                </div>
+            </div>
+            <InputForm type="submit" value="save task" classNames="btn btn-block" />
+            
 
-                <input type='submit' value='Save Task'
-                className= 'btn  btn-block'/>
+            
                 
             
         </form>
